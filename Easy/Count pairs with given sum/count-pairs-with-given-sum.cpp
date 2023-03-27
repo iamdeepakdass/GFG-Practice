@@ -18,10 +18,12 @@ public:
         }
         
         int ans = 0;
+        int temp = 0;
+        int more = 0;
         
         for(int i=0; i<n; i++){
-            int temp = arr[i];
-            int more = k-temp;
+            temp = arr[i];
+            more = k-temp;
             if(mpp.find(more) != mpp.end()){
                 ans += mpp[more];
             }
