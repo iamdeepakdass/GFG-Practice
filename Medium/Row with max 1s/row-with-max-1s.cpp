@@ -15,27 +15,27 @@ public:
 	    
 	    for(int i=0; i<n; i++){
 	        
+	        // Since the row is sorted in sorted, then access the elements from end
 	        for(int j=m-1; j>=0; j--){
+	            // Counting the number of 1's
 	            if(arr[i][j] == 1){
 	                cnt++;
 	            }
+	            // if the element is zero the break the loop
 	            else{
 	                break;
 	            }
 	        }
 	        
+	        // if the count of 1's in this row is greater than previous row
+	        // then update the temp(no of previous 1s) as cnt
 	        if(cnt > temp){
 	            temp = cnt;
 	            ans = i;
 	        }
+	        // after traversing current row, update the cnt to 0
 	        cnt = 0;
 	    }
-	    
-	   // for(auto x:mpp){
-	   //     if(x.first > temp){
-	   //         ans = x.second;
-	   //     }
-	   // }
 	    
 	    return ans;
 	    
