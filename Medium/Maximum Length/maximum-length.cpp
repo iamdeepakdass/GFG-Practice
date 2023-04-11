@@ -12,7 +12,7 @@ public:
     int solve(int a, int b, int c) {
         // code here
         int maxi = max({a,b,c});
-        if((2*(a+b+c -maxi)+2) >= maxi){
+        if(( 2*(a+b+c - maxi) + 2) >= maxi){
             return a+b+c;
         }
         return -1;
