@@ -11,31 +11,37 @@ public:
     // n is size of array
     int findZeroes(int arr[], int n, int m) {
         // code here
-        int cnt = 0;
+        int countZeroes = 0;
         int res = INT_MIN;
         
         int right = 0;
         int left = 0;
         
         while(right < n){
+            // if element is zero then increase the count
             if(arr[right] == 0){
-                cnt++;
+                countZeroes++;
             }
             
-            while(cnt > m){
+            // if the count is more than m then decrease the size of the window
+            while(countZeroes > m){
+                // if the element is zero then exclude it from the window i.e. decrease the count
                 if(arr[left] == 0){
-                    cnt--;
- 
+                    countZeroes--;
                 }
+                // we will move the left pointer in order to reduce the window
                 left++;
             }
             
+            // update the result by max size of the window
             res = max(res, right-left+1);
+            // move the right pointer ahead
             right++;
         }
         
         return res;
     }  
+  
 };
 
 //{ Driver Code Starts.
