@@ -12,24 +12,48 @@ class Solution{
         map<int,int> mpp;
         pair<int, int> p;
         
-        sort(A, A+N);
+        sort(A, A + N);
+        sort(B, B + M);
         
-        for(int i=0; i<M; i++){
-            mpp[B[i]]++;
-        }
+        int i = 0; 
+        int j = M - 1;
         
-        int reqd = 0;
-        
-        for(int i=0; i<N; i++){
-            reqd = X-A[i];
+        while(i < N && j >= 0){
             
-            if(mpp.find(reqd) != mpp.end()){
+            int sum = A[i] + B[j];
+            
+            if(sum == X){
                 p.first = A[i];
-                p.second = reqd;
+                p.second = B[j];
                 ans.push_back(p);
+                i++;
+                j--;
             }
             
+            else if(sum < X){
+                i++;
+            }
+            else{
+                j--;
+            }
         }
+        
+        // for(int i=0; i<M; i++){
+        //     mpp[B[i]]++;
+        // }
+        
+        // int reqd = 0;
+        
+        // for(int i=0; i<N; i++){
+        //     reqd = X-A[i];
+            
+        //     if(mpp.find(reqd) != mpp.end()){
+        //         p.first = A[i];
+        //         p.second = reqd;
+        //         ans.push_back(p);
+        //     }
+            
+        // }
         
         return ans;
     }
