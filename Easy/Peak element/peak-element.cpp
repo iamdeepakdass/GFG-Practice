@@ -4,6 +4,7 @@ using namespace std;
 
 
 // } Driver Code Ends
+
 /* The function should return the index of any
    peak element present in the array */
 
@@ -18,6 +19,7 @@ class Solution
         int right = n - 1;
         int ans = -1;
         
+        // Considering edge cases
         if((arr[0] > arr[1]) || n == 0){
             return 0;
         }
@@ -26,9 +28,12 @@ class Solution
             return n-1;
         }
         
+        // Applying BS on the 1 to n-1 elements
         while(left <= right){
+            
             int mid = left + (right - left)/2;
             
+            // condition for the peak element
             if((arr[mid] >= arr[mid-1]) && (arr[mid] >= arr[mid+1])){
                 return mid;
             }
