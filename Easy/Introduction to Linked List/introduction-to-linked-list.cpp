@@ -28,41 +28,41 @@ public:
 // } Driver Code Ends
 // User function Template for C++
 
-// class Node {
-// public:
-//     int data;
-//     Node* next;
+/*class Node {
+public:
+    int data;
+    Node* next;
   
-//     // Default constructor
-//     Node()
-//     {
-//         data = 0;
-//         next = NULL;
-//     }
+    // Default constructor
+    Node()
+    {
+        data = 0;
+        next = NULL;
+    }
   
-//     // Parameterised Constructor
-//     Node(int data)
-//     {
-//         this->data = data;
-//         this->next = NULL;
-//     }
-// };
+    // Parameterised Constructor
+    Node(int data)
+    {
+        this->data = data;
+        this->next = NULL;
+    }
+};*/
 
 class Solution {
   public:
     Node* constructLL(vector<int>& arr) {
         // code here
+        Node *head = new Node(arr[0]);
         
-        Node * head = new Node(arr[0]);
-        Node * temp = head;
+        Node *temp = head;
         
-        head -> next;
-        int i=1;
+        int n = arr.size();
+        int i = 1;
         
-        while(i < arr.size()){
-            Node * n = new Node(arr[i++]);
-            temp -> next = n;
-            temp = temp -> next;
+        while(i < n){
+            Node *temp1 = new Node(arr[i++]);
+            temp->next = temp1;
+            temp = temp->next;
         }
         
         return head;
