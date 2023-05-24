@@ -13,30 +13,6 @@ class Solution{
             int i=n-1;
             int j=0; 
             
-            // while(i<n && j<m){
-                
-            //     if(arr1[i] < arr2[j]){
-            //         i++;
-            //     }
-                
-            //     else if(arr1[i] > arr2[j]){
-            //         arr1[i++] = arr2[j++];
-            //     }
-                
-            //     else{
-            //         i++;
-            //         j++;
-            //     }
-            // }
-            
-            // while(i<n){
-            //     i++;
-            // }
-            
-            // while(j<m){
-            //     j++;
-            // }
-            
             while(i>=0 && j<m){
                 
                 if(arr1[i] > arr2[j]){
