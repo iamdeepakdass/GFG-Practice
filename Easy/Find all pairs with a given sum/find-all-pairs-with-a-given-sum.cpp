@@ -38,23 +38,6 @@ class Solution{
             }
         }
         
-        // for(int i=0; i<M; i++){
-        //     mpp[B[i]]++;
-        // }
-        
-        // int reqd = 0;
-        
-        // for(int i=0; i<N; i++){
-        //     reqd = X-A[i];
-            
-        //     if(mpp.find(reqd) != mpp.end()){
-        //         p.first = A[i];
-        //         p.second = reqd;
-        //         ans.push_back(p);
-        //     }
-            
-        // }
-        
         return ans;
     }
 };
