@@ -14,16 +14,19 @@ class Solution{
     //with O(1) extra space.
     void arrange(long long arr[], int n) {
         // Your code here
-        vector<int> temp(n);
+        //vector<int> temp(n);
+        
+        // for(int i=0; i<n; i++){
+        //     temp[i] = arr[i];
+        // }
         
         for(int i=0; i<n; i++){
-            temp[i] = arr[i];
+            arr[i] = arr[i] + (arr[arr[i]]%n)*n;
         }
         
         for(int i=0; i<n; i++){
-            arr[i] = temp[arr[i]];
+            arr[i] = arr[i]/n;
         }
-        
     }
 };
 
