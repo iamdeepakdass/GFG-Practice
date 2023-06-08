@@ -10,25 +10,29 @@ public:
 
 	void rearrange(int arr[], int n) {
 	    // code here
-	    queue<int> pos;
-        queue<int> neg;
-        for(int i=0;i<n;i++){
-            if(arr[i]>=0)
-                pos.push(arr[i]);
-            else
-                neg.push(arr[i]);
-           
-        }
-        for(int i=0;i<n;){
-            if(pos.size()!=0){
-                arr[i++]=pos.front();
-                pos.pop();
-            }
-            if(neg.size()!=0){
-                arr[i++]=neg.front();
-                neg.pop();
-            }
-        }
+	    
+	    queue<int>pos;
+	    queue<int>neg;
+	    
+	    for(int i=0; i<n; i++){
+	        if(arr[i] >= 0){
+	            pos.push(arr[i]);
+	        }
+	        else{
+	            neg.push(arr[i]);
+	        }
+	    }
+	    int i=0;
+	    while(!pos.empty() || !neg.empty()){
+	        if(!pos.empty()){
+	            arr[i++] = pos.front();
+	            pos.pop();
+	        }
+	        if(!neg.empty()){
+	            arr[i++] = neg.front();
+	            neg.pop();
+	        }
+	    }
 	}
 };
 
