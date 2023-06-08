@@ -49,7 +49,9 @@ class Solution
             end->next = newNode;
             end = end->next;
             ans = ans->next;
+            Node *temp = curr;
             curr = curr->next;
+            delete temp;
             len++;
         }
         
