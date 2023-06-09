@@ -9,15 +9,16 @@ class Solution{
 	int findSwapValues(int A[], int n, int B[], int m)
 	{
         // Your code goes here
-        map<int, int>mpA;
-        map<int, int>mpB;
-        for(int i=0; i<n; i++){
-            mpA[A[i]] = i;
-        }
-        for(int i=0; i<m; i++){
-            mpB[B[i]] = i;
-        }
-        
+        // map<int, int>mpA;
+        // map<int, int>mpB;
+        // for(int i=0; i<n; i++){
+        //     mpA[A[i]] = i;
+        // }
+        // for(int i=0; i<m; i++){
+        //     mpB[B[i]] = i;
+        // }
+        sort(A, A+n);
+        sort(B, B+m);
         int sumA = 0;
         int sumB = 0;
         
@@ -28,20 +29,18 @@ class Solution{
             sumB += B[i];
         }
         
-        int total = sumA + sumB;
-        if(total&1){
-            return -1;
-        }
-        else{
-            int reqdA = total/2 - sumA;
-            int reqdB = total/2 - sumB;
-            for(auto it: mpA){
-                int temp = sumA - it.first;
-                int reqd = total/2 - temp;
-                if(mpB.find(reqd) != mpB.end()){
-                    return 1;
-                    break;
-                }
+        int i=0, j=0;
+        while(i<n && j<m){
+            int newSumA = sumA - A[i] + B[j];
+            int newSumB = sumB - B[j] + A[i];
+            if(newSumA == newSumB){
+                return 1;
+            }
+            else if(newSumA < newSumB){
+                j++;
+            }
+            else{
+                i++;
             }
         }
         
