@@ -37,23 +37,35 @@ class Solution
         
         // Add code here
         Node* temp = head;
-        
-        vector<int> store;
+        int cnt0 = 0;
+        int cnt1 = 0, cnt2 = 0;
         
         while(temp != NULL){
-            store.push_back(temp->data);
+            if(temp->data == 0){
+                cnt0++;
+            }
+            else if(temp->data == 1){
+                cnt1++;
+            }
+            else{
+                cnt2++;
+            }
             temp = temp->next;
         }
         
-        sort(store.begin(), store.end());
-        int i=0;
         temp = head;
-        
-        while(temp != NULL){
-            temp->data = store[i++];
+        while(cnt0--){
+            temp->data = 0;
             temp = temp->next;
         }
-        
+        while(cnt1--){
+            temp->data = 1;
+            temp = temp->next;
+        }
+        while(cnt2--){
+            temp->data = 2;
+            temp = temp->next;
+        }
         return head;
     }
 };
