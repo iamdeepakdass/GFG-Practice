@@ -24,6 +24,7 @@ class Solution
     Node *copyList(Node *head)
     {
         //Write your code here
+        // Clone a linked list using the head
         Node *dummy = new Node(-1);
         Node *temp = dummy;
         
@@ -36,7 +37,7 @@ class Solution
         }
         
         curr = head;
-        
+        // Make a map of old and cloned linked list nodes
         unordered_map<Node*, Node*>mpp;
         Node *cloneNode = dummy->next;
         
@@ -49,6 +50,7 @@ class Solution
         curr = head;
         cloneNode = dummy->next;
         
+        // Now set the random pointer in the clone linked list as the same of the old LL
         while(curr != NULL){
             cloneNode->arb = mpp[curr->arb];
             cloneNode = cloneNode->next;
