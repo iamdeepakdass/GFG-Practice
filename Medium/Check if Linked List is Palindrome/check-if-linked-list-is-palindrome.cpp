@@ -54,7 +54,7 @@ class Solution{
         }
         
         Node *slow = head, *fast = head;
-        
+        // get the mid point of the list
         while(fast->next != NULL && fast->next->next != NULL){
             slow = slow->next;
             fast = fast->next->next;
@@ -63,9 +63,11 @@ class Solution{
             }
         }
         
+        // reverse half of the list
         Node *ptr1 = reverse(slow->next);
         Node *ptr2 = head;
         
+        // now check data of each node if they are same
         while(ptr1 != NULL){
             if(ptr1->data != ptr2->data){
                 return false;
@@ -76,8 +78,10 @@ class Solution{
             
         }
         
+        // reverse the half of the list least again in order to make it same again
         slow->next = reverse(slow->next);
         return true;
+        
     }
 };
 
