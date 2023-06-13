@@ -10,17 +10,20 @@ class Solution{
 public:	
 	vector<int> kLargest(int arr[], int n, int k) {
 	    // code here
-	    priority_queue<int> pq;
+	   // priority_queue<int> pq;
 	    
-	    for(int i=0; i<n; i++){
-	        pq.push(arr[i]);
-	    }
-	    
+	   // for(int i=0; i<n; i++){
+	   //     pq.push(arr[i]);
+	   // }
+	    sort(arr, arr+n);
+	    int idx = n-1;
 	    vector<int> ans;
 	    
 	    while(k--){
-	        ans.push_back(pq.top());
-	        pq.pop();
+	       // ans.push_back(pq.top());
+	       // pq.pop();
+	       ans.push_back(arr[idx--]);
+	       
 	    }
 	    
 	    return ans;
