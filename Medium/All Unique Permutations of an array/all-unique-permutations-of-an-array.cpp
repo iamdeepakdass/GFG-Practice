@@ -11,6 +11,7 @@ using namespace std;
 class Solution {
   public:
     void solve(int ind, vector<int> &arr, vector<vector<int>> &ans){
+        
         if(ind >= arr.size()){
             ans.push_back(arr);
             return;
