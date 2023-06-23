@@ -20,20 +20,21 @@ class Solution{
         for(int i=n-1; i>=0; i--){
             
             int curr = arr[i];
+            // if the smaller element found then simply change the value of arr[i] by this
             if(st.top() < arr[i]){
                 int elem = st.top();
-                //st.pop();
                 st.push(curr);
                 arr[i] = elem;
             }
+            
+            // else check the stack for the smaller element
             else{
-                while(st.top() >= arr[i] && !st.empty()){
+                while(st.top() >= arr[i]){
                     st.pop();
                 }
                 int elem = st.top();
-                //st.pop();
-                st.push(curr);
                 arr[i] = elem;
+                st.push(curr);
             }
         }
         
