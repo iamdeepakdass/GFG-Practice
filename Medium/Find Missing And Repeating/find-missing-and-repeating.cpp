@@ -6,11 +6,11 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
 public:
-    int *findTwoElement(int *arr, int n) {
+    vector<int> findTwoElement(vector<int> arr, int n) {
         // code here
         
-        int missing = 0;
-        int repeat = 0;
+        int missing = -1;
+        int repeat = -1;
         
         vector<int> temp (n+1, 0);
         
@@ -27,14 +27,8 @@ public:
             }
         }
         
-        int ans[2] = {0};
+        return {repeat, missing};
         
-        ans[1] = missing;
-        ans[0] = repeat;
-        
-        int *aans = ans;
-        
-        return aans;
     }
 };
 
@@ -46,7 +40,7 @@ int main() {
     while (t--) {
         int n;
         cin >> n;
-        int a[n];
+        vector<int> a(n);
         for (int i = 0; i < n; i++) {
             cin >> a[i];
         }
