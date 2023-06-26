@@ -12,10 +12,7 @@ class Solution
     public:
     
     bool knows(vector<vector<int> >& M,int A, int B, int n){
-        if(M[A][B] == 1){
-            return true;
-        }
-        return false;
+        return M[A][B] == 1 ? true : false;
     }
     
     //Function to find if there is a celebrity in the party or not.
@@ -23,8 +20,6 @@ class Solution
     {
         // code here 
         stack<int> st;
-        // int n = M.size();
-        // int m = M[0].size();
         
         for(int i=0; i<n; i++){
             st.push(i);
