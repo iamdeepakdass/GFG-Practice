@@ -9,8 +9,10 @@ class Solution
 {
     public:
     //Function to check if brackets are balanced or not.
-    bool matches(char c, char d){
-        return c==d;
+    bool isMatching(char a, char b){
+        return ((a == '(' && b == ')') ||
+                (a == '{' && b == '}') || 
+                (a == '[' && b == ']'));
     }
     
     bool ispar(string x)
@@ -29,18 +31,22 @@ class Solution
             }
             
             else{
-
+                // if closing brackets
                 if(!st.empty()){
                     char temp = st.top();
                     
-                    if((ch == ')' && temp == '(')
-                    || (ch == '}' && temp == '{') 
-                    || (ch == ']' && temp == '[')){
+                    // if((ch == ')' && temp == '(')
+                    // || (ch == '}' && temp == '{') 
+                    // || (ch == ']' && temp == '[')){
+                    //     st.pop();
+                    // }
+                    // else{
+                    //     return false;
+                    // }
+                    if(isMatching(temp,ch)){
                         st.pop();
                     }
-                    else{
-                        return false;
-                    }
+                    else return false;
                 }
                 else{
                     return false;
@@ -48,14 +54,14 @@ class Solution
             }
         }
         
-        if(st.empty()){
-            return true;
-        }
+        // if(st.empty()){
+        //     return true;
+        // }
         
-        else{
-            return false;
-        }
-        
+        // else{
+        //     return false;
+        // }
+        return st.empty();
     }
 
 };
