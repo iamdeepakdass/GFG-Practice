@@ -9,7 +9,7 @@ using namespace std;
 class Solution
 {
     public:
-    //Function to calculate the span of stockâ€™s price for all n days.
+    //Function to calculate the span of stock's price for all n days.
     vector <int> calculateSpan(int arr[], int n)
     {
        // Your code here
@@ -17,23 +17,15 @@ class Solution
        stack<int> st;
        
        for(int i=0; i<n; i++){
-           
+            
+            // we try to find the previous greater element in the stack
             while(!st.empty() && arr[st.top()] <= arr[i]){
                 st.pop();
             }
-           
-            if(st.empty()){
-                if(i == 0){
-                    ans.push_back(1);
-                }
-                else{
-                    ans.push_back(i+1);
-                }
-            }
+            // if the stack is empty, simply push i+1, else i-st.top()
+            ans.push_back(st.empty() ? (i == 0 ? 1 : i+1) : i-st.top());
             
-            else{
-                ans.push_back(i - st.top());
-            }
+            //we push the current element in order to use it for further elements
             st.push(i);
        }
        
