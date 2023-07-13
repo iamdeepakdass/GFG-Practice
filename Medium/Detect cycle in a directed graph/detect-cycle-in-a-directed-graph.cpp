@@ -6,7 +6,7 @@ using namespace std;
 class Solution {
   public:
   
-  bool dfs(int vertex, int parent, vector<int> graph[], bool vis[], bool checked[])
+    bool dfs(int vertex, int parent, vector<int> graph[], bool vis[], bool checked[])
     {
         if(checked[vertex]) return false;
         if(vis[vertex]) return true;
@@ -15,7 +15,6 @@ class Solution {
     
         for (int child : graph[vertex])
         {
-
             if (vis[child])
                 return true;
 
@@ -23,6 +22,7 @@ class Solution {
             checked[child] = true;
         
         }
+        
         vis[vertex] = false;
         return isLoopExist;
     }
