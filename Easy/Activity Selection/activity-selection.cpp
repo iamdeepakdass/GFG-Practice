@@ -29,26 +29,14 @@ class Solution
         
         sort(intervals.begin(), intervals.end(), myComp());
         
-        // for(int i=0; i<n; i++){
-        //     cout<<intervals[i].first<<" "<<intervals[i].second<<"\n";
-        // }
-        
-        //pair<int, int> temp;
         int cnt = 1;
-        //temp.first = intervals[0].first;
         int e = intervals[0].second;
         
         for(int i=1; i<n; i++){
-            if(intervals[i].first <= e){
-                continue;
-            }
-            //else if(intervals[i].first == intervals[i].second) continue;
-            else{
-                //temp.first = intervals[i].first;
-                //temp.second = intervals[i].second;
+            if(intervals[i].first > e){
                 e = intervals[i].second;
-                cnt++;  
-            } 
+                cnt++;
+            }
         }
         
         return cnt;
