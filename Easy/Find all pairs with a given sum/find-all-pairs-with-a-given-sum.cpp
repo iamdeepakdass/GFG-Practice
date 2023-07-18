@@ -7,35 +7,18 @@ class Solution{
     public:
     vector<pair<int,int>> allPairs(int A[], int B[], int N, int M, int X)
     {
+        // Your code goes here   
         vector<pair<int,int>> ans;
+        sort(A, A+N);
+        sort(B, B+M);
         
-        map<int,int> mpp;
-        pair<int, int> p;
-        
-        sort(A, A + N);
-        sort(B, B + M);
-        
-        int i = 0; 
-        int j = M - 1;
+        int i = 0, j = M-1;
         
         while(i < N && j >= 0){
-            
             int sum = A[i] + B[j];
-            
-            if(sum == X){
-                p.first = A[i];
-                p.second = B[j];
-                ans.push_back(p);
-                i++;
-                j--;
-            }
-            
-            else if(sum < X){
-                i++;
-            }
-            else{
-                j--;
-            }
+            if(sum < X) i++;
+            else if(sum > X) j--;
+            else ans.push_back({A[i++], B[j--]});
         }
         
         return ans;
