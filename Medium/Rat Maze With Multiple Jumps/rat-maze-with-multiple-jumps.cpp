@@ -5,10 +5,6 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
 public:
-    bool isSafe(int i, int j, int n, vector<vector<int>> &matrix){
-        return (i >= n || j >= n || matrix[i][j] == 0) ? false : true;
-    }
-    
     bool solveMaze(int i, int j, int n, vector<vector<int>> &matrix, vector<vector<int>> &ans){
         
         if(i == n-1 && j == n-1){
