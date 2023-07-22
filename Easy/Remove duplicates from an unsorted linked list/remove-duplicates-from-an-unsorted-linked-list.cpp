@@ -44,28 +44,21 @@ class Solution
     Node * removeDuplicates( Node *head) 
     {
      // your code goes here
-        if(head == NULL || head->next == NULL){
-            return head;
-        }
-        
-        unordered_set<int> s;
-        Node *dummy = new Node(-1);
-        Node *temp = dummy;
-        
         Node *curr = head;
+        unordered_map<int, int> mpp;
         
-        while(curr){
-            
-            if(s.find(curr->data) == s.end()){
-                Node *n = new Node(curr->data);
-                temp->next = n;
-                temp = temp->next;
+        Node *dummy = new Node(-1);
+        Node *tail = dummy;
+        
+        while(curr != NULL){
+            if(mpp.find(curr->data) ==  mpp.end()){
+                Node *newNode = new Node(curr->data);
+                tail->next = newNode;
+                tail = newNode;
+                mpp[curr->data]++;
             }
-            s.insert(curr->data);
-            curr = curr->next;
-            
+            else curr = curr->next;
         }
-        
         
         return dummy->next;
     }
