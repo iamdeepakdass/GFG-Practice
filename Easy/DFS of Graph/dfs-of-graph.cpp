@@ -6,25 +6,25 @@ using namespace std;
 
 class Solution {
   public:
-    // Function to return a list containing the DFS traversal of the graph.
     
-    void solve(int V, vector<int> adj[], vector<int> &ans, vector<bool> &vis){
+    void dfs(int v, vector<int> adj[], vector<int> &ans, vector<bool> &vis){
         
-        vis[V] = true;
-        ans.push_back(V);
+        vis[v] = true;
+        ans.push_back(v);
         
-        for(int child : adj[V]){
+        for(int child : adj[v]){
             if(vis[child]) continue;
-            solve(child, adj, ans, vis);
-            
+            dfs(child, adj, ans, vis);
         }
     }
     
+    // Function to return a list containing the DFS traversal of the graph.
     vector<int> dfsOfGraph(int V, vector<int> adj[]) {
         // Code here
-        vector<bool> vis(V, false);
+        int N = 1e4 + 10;
+        vector<bool> vis(N, false);
         vector<int> ans;
-        solve(0, adj, ans, vis);
+        dfs(0, adj, ans, vis);
         
         return ans;
     }
