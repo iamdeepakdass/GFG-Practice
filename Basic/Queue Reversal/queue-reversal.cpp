@@ -11,20 +11,28 @@ using namespace std;
 class Solution
 {
     public:
+    
+    void solve(queue<int> &q, queue<int> &ans){
+        if(q.empty()){
+            return;
+        }
+        else{
+            int tp = q.front();
+            q.pop();
+            solve(q, ans);
+            ans.push(tp);
+            //return;
+            //q.push(tp);
+        }
+    }
     queue<int> rev(queue<int> q)
     {
-        // add code here.
-        stack<int> st;
-        while(!q.empty()){
-            st.push(q.front());
-            q.pop();
-        }
+        if(q.empty()) return q;
         
-        while(!st.empty()){
-            q.push(st.top());
-            st.pop();
-        }
-        return q;
+        queue<int> ans;
+        
+        solve(q, ans);
+        return ans;
     }
 };
 
