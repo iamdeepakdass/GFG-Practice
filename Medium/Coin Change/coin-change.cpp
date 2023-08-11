@@ -4,32 +4,28 @@ using namespace std;
 
 // } Driver Code Ends
 
-#define ll long long
-#define rep(i, a, b) for (int i = a; i < b; i++)
+#define lli long long int
 
 class Solution {
   public:
-    long long int count(int coins[], int N, int sum) {
+    long long int count(int coins[], int n, int sum) {
 
         // code here.
-        vector<vector<ll>> dp(N+1,vector<ll>(sum+1,0));
-        rep(i,0,N+1){
-            dp[i][0] = 1;
-        }
+        vector<vector<lli>> dp(n+1, vector<lli>(sum + 1, 0));
         
-        rep(i,1,N+1){
-            rep(j,1,sum+1){
+        for(int i=0; i<n+1; i++) dp[i][0] = 1;
+        
+        for(int i=1; i<n+1; i++){
+            for(int j=1; j<sum+1; j++){
                 if(coins[i-1] <= j){
                     dp[i][j] = dp[i][j-coins[i-1]] + dp[i-1][j];
                 }
-                else{
-                    dp[i][j] = dp[i-1][j];
-                }
+                else dp[i][j] = dp[i-1][j];
             }
         }
         
-        return dp[N][sum];
-    }
+        return dp[n][sum];
+    }       
 };
 
 //{ Driver Code Starts.
