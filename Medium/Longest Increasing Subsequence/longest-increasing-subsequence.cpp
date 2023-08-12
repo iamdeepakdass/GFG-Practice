@@ -19,7 +19,8 @@ class Solution
             if(a[i]>ans.back())ans.push_back(a[i]);
             else
             {
-                int idx = lower_bound(begin(ans),end(ans),a[i])-begin(ans);
+                //int idx = lower_bound(begin(ans),end(ans),a[i])-begin(ans);
+                int idx = lower_bound(ans.begin(), ans.end(),a[i])-ans.begin();
                 ans[idx]=a[i];
             }
         }
