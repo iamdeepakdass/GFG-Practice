@@ -5,28 +5,22 @@ using namespace std;
 
 // } Driver Code Ends
 // User function Template for C++
-
-const int Mod = 1e9 + 7;
-
 class Solution {
   public:
-    int fibbCalc(int n, vector<int> &dp){
-        if(dp[n] == -1) {
-            int ans;
-            if(n == 0 || n == 1){
-                ans = n;
-            }
-            else ans = fibbCalc(n-1, dp) + fibbCalc(n-2, dp);
-            dp[n] = ans%Mod;
-        }
-        
-        return dp[n];
-    }
-    
     int nthFibonacci(int n){
         // code here
-        vector<int> dp(n+10, -1);
-        return fibbCalc(n, dp);
+        int mod = 1e9 + 7;
+        if(n <= 2) return 1;
+        int first = 1;
+        int second = 1;
+        
+        for(int i=2; i<n; i++){
+            int next = (first + second)%mod;
+            first = second;
+            second = next;
+        }
+        
+        return second;
     }
 };
 
