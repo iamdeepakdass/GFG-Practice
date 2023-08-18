@@ -42,7 +42,6 @@ class Solution{
     int getMiddle(Node *head)
     {
         // Your code here
-        
         Node *walker = head;
         Node *runner = head;
         
