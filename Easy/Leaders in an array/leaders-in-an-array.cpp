@@ -12,30 +12,19 @@ class Solution{
     //Function to find the leaders in the array.
     public:
     vector<int> leaders(int a[], int n){
-        
-        
+        // Code here
+        if(n == 1) return {a[0]};
         vector<int> ans;
-        
-        // Initialize maxi element ny min value
         int maxi = INT_MIN;
         
         for(int i=n-1; i>=0; i--){
-            
-            // if current element is greater than maxi then update the maxi as current element
-            // and store in the ans
-            
             if(a[i] >= maxi){
                 maxi = a[i];
                 ans.push_back(a[i]);
-            }
-            else{
-                continue;
-            }
-            
+            }    
         }
         
         reverse(ans.begin(), ans.end());
-        
         return ans;
     }
 };
