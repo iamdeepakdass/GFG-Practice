@@ -46,53 +46,45 @@ struct Node
 class Solution
 {
     public:
-    void reverseLL(Node *s, Node *e){
-        Node *prev = NULL, *n = s->next, *curr = s;
+    Node *reverse(Node *head){
+        Node *prev = NULL, *curr = head, *n = head->next;
         
-        while(prev != e){
+        while(curr){
             curr->next = prev;
             prev = curr;
             curr = n;
-            if(n != NULL) n = n->next;
+            if(n != NULL)n = n->next;
         }
+        return prev;
     }
-
+    
     Node *compute(Node *head)
     {
         // your code goes here
         if(head == NULL || head->next == NULL) return head;
-        
-        Node *curr = head;
         stack<int> st;
         
-        while(curr != NULL){
-            while(!st.empty() && st.top() < curr->data){
+        Node *curr = head;
+        while(curr){
+            while(!st.empty() && st.top()<curr->data){
                 st.pop();
             }
-            
             st.push(curr->data);
             curr = curr->next;
         }
+        
         Node *dummy = new Node(-1);
-        Node *temp = dummy;
+        Node *tail = dummy;
         
         while(!st.empty()){
-            Node *newNode = new Node(st.top());
-            temp->next = newNode;
-            temp = newNode;
+            Node *temp = new Node(st.top());
             st.pop();
-        }
-        curr = dummy->next;
-        while(curr->next != NULL){
-            curr = curr->next;
+            tail->next = temp;
+            tail = temp;
         }
         
-        Node *s = dummy->next;
-        reverseLL(s,curr);
-        dummy->next = curr;
-        s->next = NULL;
-        
-        return dummy->next;
+        tail->next = NULL;
+        return reverse(dummy->next);
     }
     
 };
