@@ -6,22 +6,15 @@ using namespace std;
 class Solution{
 
 	public:
-	void solve(int arr[], int n, int sum, int ans, vector<int> &memo){
-	    
-	}
-	
 	int perfectSum(int arr[], int n, int sum)
 	{
         // Your code goes here
         long long m = 1e9+7;
         int ans = 0;
         vector<vector<int>> dp(n+1, vector<int>(sum+1,0));
-        
+    
         for(int i=0; i<n+1; i++){
-            for(int j=0; j<sum+1; j++){
-                if(i==0)dp[i][j]=0;
-                if(j==0)dp[i][j]=1;
-            }
+            dp[i][0] = 1;
         }
         
         for(int i=1; i<n+1; i++){
