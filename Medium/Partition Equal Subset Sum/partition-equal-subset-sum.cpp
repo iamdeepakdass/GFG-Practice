@@ -6,7 +6,6 @@ using namespace std;
 
 // } Driver Code Ends
 // User function Template for C++
-
 #define rep(i, a, b) for (int i = a; i < b; i++)
 
 class Solution{
@@ -34,17 +33,14 @@ public:
     int equalPartition(int N, int arr[])
     {
         // code here
+        // find sum of the array elements
         long long sum = 0;
         int n = N;
         rep(i,0,n){
             sum += arr[i];
         }
-        if(sum&1) return 0;
-        
-        else{
-            if(isSubsetSum(arr, n, sum/2)) return true;
-            else return false;
-        }
+        // If the sum is even then it can be partitioned, else no
+        return (sum&1) ? 0 : isSubsetSum(arr, n, sum/2);
     }
 };
 
