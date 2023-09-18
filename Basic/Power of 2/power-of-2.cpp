@@ -12,12 +12,10 @@ class Solution{
     public:
     // Function to check if given number n is a power of two.
     bool isPowerofTwo(long long n){
+        if(n == 0) return 0;
         
-        // Your code here    
-        // long long num = 1;
-        // while()
-        // return false;
-        return __builtin_popcountll(n) == 1;
+        if(log2(n) - floor(log2(n)) > 0) return false;
+        return true;
     }
 };
 
