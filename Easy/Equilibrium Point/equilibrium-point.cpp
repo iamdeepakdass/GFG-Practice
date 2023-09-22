@@ -4,6 +4,9 @@ using namespace std;
 
 
 // } Driver Code Ends
+
+#define ll long long
+
 class Solution{
     public:
     // Function to find equilibrium point in the array.
@@ -12,25 +15,23 @@ class Solution{
     int equilibriumPoint(long long a[], int n) {
     
         // Your code here
-        int leftSum = 0;
-        int rightSum = 0;
+        long long leftSum = 0, rightSum = 0;
+        int index = -1;
         
         for(int i=0; i<n; i++){
             rightSum += a[i];
         }
         
         for(int i=0; i<n; i++){
-            
             rightSum -= a[i];
-            
             if(leftSum == rightSum){
-                return i+1;
+                index = i+1;
+                break;
             }
-            
-            leftSum += a[i];
+            leftSum += a[i]; 
         }
         
-        return -1;
+        return index;
     }
 
 };
